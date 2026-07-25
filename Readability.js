@@ -1308,8 +1308,8 @@ Readability.prototype = {
 
         // Scale the final candidates score based on link density. Good content
         // should have a relatively small link density (5% or less) and be mostly
-        // unaffected by this operation. Plain-text URLs are counted here (only)
-        // so a block that is mostly bare URLs (e.g. an endnote/citation dump)
+        // unaffected by this operation. Plain-text URLs are counted here
+        // so a block that is mostly URLs (e.g. an endnote/citation dump)
         // can't outscore genuine article prose.
         var candidateScore =
           candidate.readability.contentScore *
@@ -2158,8 +2158,8 @@ Readability.prototype = {
       linkLength += this._getInnerText(linkNode).length * coefficient;
     });
 
-    // Optionally count plain-text URLs (e.g. citation sections) as links
-    // too. Used when scoring a candidate for now so actual article content is
+    // Optionally count plain-text URLs (e.g. citation sections) as links.
+    // Used when scoring a candidates so actual article content is
     // given precedence over a list of links.
     if (includePlainTextUrls) {
       var innerText = this._getInnerText(element);
