@@ -160,7 +160,7 @@ Readability.prototype = {
     whitespace: /^\s*$/,
     hasContent: /\S$/,
     hashUrl: /^#.+/,
-    plainTextUrl: /https?:\/\/[^\s<>"')\]]+/g,
+    httpUrl: /https?:\/\/[^\s<>"')\]]+/g,
     srcsetUrl: /(\S+)(\s+[\d.]+[xw])?(\s*(?:,|$))/g,
     b64DataUrl: /^data:\s*([^\s;,]+)\s*;\s*base64\s*,/i,
     // Commas as used in Latin, Sindhi, Chinese and various other scripts.
@@ -2163,7 +2163,7 @@ Readability.prototype = {
     // given precedence over a list of links.
     if (includePlainTextUrls) {
       var innerText = this._getInnerText(element);
-      var urls = innerText.match(this.REGEXPS.plainTextUrl) || [];
+      var urls = innerText.match(this.REGEXPS.httpUrl) || [];
       urls.forEach(function (url) {
         linkLength += url.length;
       });
